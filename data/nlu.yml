@@ -1,92 +1,62 @@
 version: "2.0"
 
 nlu:
+
+- intent: tell_me_a_joke
+  examples: |
+    - Opowiedz mi jakiś dowcip
+    - powiedz mi coś śmiesznego
+    - rozśmiesz mnie
+    - chcę posłuchać dowcipu
+    - Znasz jakieś śmieszne żarty?
+
+- intent: add_contact
+  examples: |
+    - dodaj kontakt [Marek Kowalski](person) m.k@mail.com
+    - dodaj proszę do kontaktów [anię sikorską](person)
+    - wrzuć do książki kontaktów [Jarka Sobolewskiego](person)
+    - dodaj połączenie z [Elą Nowak](person)
+    - wrzuć połączenie z [Adamem Morawskim](person) do kontaktów
+    - dodaj do książki [Piotra Wareckiego](person)
+    - utwórz proszę kontakt z [Martą Wawrzecką](person)
+    - utwórz profil dla [Bartka Pawlikowskiego](person)
+    - stwórz profil w kontaktach dla [Agnieszki Rydzewskiej](person)
+
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - cześć
+    - Cześć!
+    - hej
+    - Siema
+    - dzień dobry!
+    - Witam!
+    - Asystencie!
 
 - intent: goodbye
   examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - to wszystko
+    - dzięki na razie
+    - Na razie
+    - Do zobaczenia
+    - cześć
+    - Cześć!
+    - do widzenia
+    - to wszystko, cześć
 
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+    - tak
+    - dokładnie
+    - Zgadza się
+    - OK
+    - Tak!
 
 - intent: deny
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - Nie
+    - źle!
+    - źle mnie zrozumiałeś
+    - nie o to chodziło
+    - inaczej!
+    - nie nie
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
