@@ -9,18 +9,31 @@ intents:
   - add_contact
   - tell_me_a_joke
   - get_forex
+  - inform
 
 entities:
   - person
+  - email
 
 slots:
   person:
     type: text
+  email:
+    type: text
+
+forms:
+  contact_form:
+    person:
+    - type: from_entity
+      entity: person
+    email:
+    - type: from_entity
+      entity: email
 
 actions:
   - utter_greet
   - utter_goodbye
-  - action_add_contact
+  - action_submit_contact_form
   - action_get_forex
 
 responses:
@@ -34,6 +47,17 @@ responses:
 
   utter_joke:
   - text: "Przychodzi chatbot do lekarza... A lekarz też chatbot!"
+
+  utter_ask_person:
+  - text: "Jak nazywa się ta osoba?"
+
+  utter_ask_email:
+  - text: "Jaki jest adres email tej osoby?"
+  
+  utter_default_fallback:
+  - text: "Przepraszam, czegoś nie zrozumiałem. Czy możesz wyrazić to inaczej?"
+
+  
 
 session_config:
   session_expiration_time: 60

@@ -2,6 +2,32 @@ version: "2.0"
 
 nlu:
 
+
+- intent: out_of_scope
+  examples: |
+    - źle mnie zrozumiałeś
+    - nie o to chodziło
+    - inaczej!
+    - przerwij
+    - stop
+    - chodzi mi o co innego
+
+- intent: inform
+  examples: |
+    - [Adam Morawski](person)
+    - [Karolina Dąbrowska](person)
+    - nazywa się [Agata Mazowiecka](person)
+    - [Jerzy Rogalski](person)
+    - [andrzej poręba](person)
+    - [robert](person)
+    - [Asia](person)
+    - ma na imię [Beata](person)
+    - [joanna kwiatkowska](person)
+    - jej mail to [a.k@mail.com](email)
+    - [agata@gmail.pl](email)
+    - jego adres to [mailjana@janmail.org](email)
+    - [marta@narta.pl](email)
+
 - intent: get_forex
   examples: |
     - Pokaż mi ceny walut
@@ -24,15 +50,20 @@ nlu:
 
 - intent: add_contact
   examples: |
-    - dodaj kontakt [Marek Kowalski](person) m.k@mail.com
-    - dodaj proszę do kontaktów [anię sikorską](person)
+    - dodaj kontakt [Marek Kowalski](person) [m.k@mail.com](email)
+    - dodaj [Ewę](person) do listy znajomych
+    - wrzuć [pawła](person) do listy kontaktów
+    - dodaj proszę do kontaktów [anię sikorską](person), adres email [ao@oa.pl](email)
     - wrzuć do książki kontaktów [Jarka Sobolewskiego](person)
     - dodaj połączenie z [Elą Nowak](person)
-    - wrzuć połączenie z [Adamem Morawskim](person) do kontaktów
+    - wrzuć połączenie z [Adamem Morawskim](person) do kontaktów, jego mail to [b.c@a.com](email)
     - dodaj do książki [Piotra Wareckiego](person)
     - utwórz proszę kontakt z [Martą Wawrzecką](person)
     - utwórz profil dla [Bartka Pawlikowskiego](person)
     - stwórz profil w kontaktach dla [Agnieszki Rydzewskiej](person)
+    - utwórz kontakt
+    - utwórz nowy wpis w kontaktach
+    - dodaj nowy kontakt do książki
 
 - intent: greet
   examples: |
@@ -65,8 +96,5 @@ nlu:
   examples: |
     - Nie
     - źle!
-    - źle mnie zrozumiałeś
-    - nie o to chodziło
-    - inaczej!
     - nie nie
 
