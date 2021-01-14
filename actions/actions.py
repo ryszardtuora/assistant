@@ -15,6 +15,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
 from contact_utils import extract_name, add_contact
+from api_utils import get_currency_rates
 
 nlp = spacy.load("pl_spacy_model_morfeusz")
 test_doc = nlp("to jest dokument testowy")
@@ -46,7 +47,22 @@ class ActionAddContact(Action):
             confirmation_message = "Dodano kontakt: {}.".format(extracted_name)
             dispatcher.utter_message(text=confirmation_message)
         else: # ekstrakcja się nie udała, prosimy o ponowienie
-            error_message = "Nie zrozumiałem imienia lub nazwiska tej osoby, proszę powtórz polecenie."
+            error_message  = "Nie zrozumiałem imienia lub nazwiska tej osoby, proszę powtórz polecenie."
             dispatcher.utter_message(text=error_message)
         return [SlotSet("person", extracted_name)]
+
+
+class ActionGetForex(Action):
+
+    def name(self) -> Text:
+        return "action_get_forex"
+
+    def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        rates = get_currency_rates()
+        dispatcher.utter_message(text=rates)
+        return []
+
+
 

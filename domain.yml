@@ -8,6 +8,7 @@ intents:
   - book_meeting
   - add_contact
   - tell_me_a_joke
+  - get_forex
 
 entities:
   - person
@@ -20,6 +21,7 @@ actions:
   - utter_greet
   - utter_goodbye
   - action_add_contact
+  - action_get_forex
 
 responses:
   utter_greet:

@@ -2,6 +2,21 @@ version: "2.0"
 
 stories:
 
+- story: get_forex_1
+  steps:
+  - intent: get_forex
+  - action: action_get_forex
+
+- story: mixed
+  steps:
+  - intent: get_forex
+  - action: action_get_forex
+  - intent: add_contact
+  - action: action_add_contact
+  - intent: tell_me_a_joke
+  - action: utter_joke
+
+
 - story: add_contact_1
   steps:
   - intent: add_contact

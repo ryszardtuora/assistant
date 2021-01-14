@@ -2,6 +2,18 @@ version: "2.0"
 
 nlu:
 
+- intent: get_forex
+  examples: |
+    - Pokaż mi ceny walut
+    - Jak stoją teraz waluty?
+    - ile kosztuje obecnie dolar?
+    - Ile jest warte euro?
+    - wypisz mi waluty
+    - wypisz dane z forexa
+    - pokaż forex
+    - pobierz dane o walutach
+    - jaka jest cena funta?
+
 - intent: tell_me_a_joke
   examples: |
     - Opowiedz mi jakiś dowcip
