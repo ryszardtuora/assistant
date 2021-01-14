@@ -43,10 +43,10 @@ class ActionAddContact(Action):
         extracted_name = extract_name(message, nlp) # ekstrakcja znormalizowanego nazwiska i imienia
         if extracted_name: # ekstrakcja się udała -> zapisujemy dane w pliku
             add_contact(extracted_name)
-            confirmation_message = "Dodano kontakt: {}. Czy wszystko się zgadza?".format(extracted_name)
+            confirmation_message = "Dodano kontakt: {}.".format(extracted_name)
             dispatcher.utter_message(text=confirmation_message)
         else: # ekstrakcja się nie udała, prosimy o ponowienie
-            error_message "Nie zrozumiałem imienia lub nazwiska tej osoby, proszę powtórz polecenie."
+            error_message = "Nie zrozumiałem imienia lub nazwiska tej osoby, proszę powtórz polecenie."
             dispatcher.utter_message(text=error_message)
         return [SlotSet("person", extracted_name)]
 

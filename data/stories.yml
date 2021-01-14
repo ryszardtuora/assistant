@@ -4,17 +4,11 @@ stories:
 
 - story: add_contact_1
   steps:
-  - intent: greet
-  - action: utter_greet
   - intent: add_contact
   - action: action_add_contact
-  - intent: goodbye
-  - action: utter_goodbye
 
 - story: joke
   steps:
-  - intent: greet
-  - action: utter_greet
   - intent: tell_me_a_joke
   - action: utter_joke
 
