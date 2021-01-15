@@ -28,6 +28,13 @@ nlu:
     - jego adres to [mailjana@janmail.org](email)
     - [marta@narta.pl](email)
 
+- intent: recover_contact_email
+  examples: |
+    - Podaj mi mail do [Adama Wielomskiego](person)
+    - jaki email ma [ela kwiatkowska](person)?
+    - chcę adres mailowy do [Witolda](person)
+    - pokaż jaki ma adres [karolina](person)
+
 - intent: get_forex
   examples: |
     - Pokaż mi ceny walut

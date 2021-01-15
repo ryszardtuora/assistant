@@ -7,6 +7,7 @@ intents:
   - deny
   - book_meeting
   - add_contact
+  - recover_contact_email
   - tell_me_a_joke
   - get_forex
   - inform
@@ -35,6 +36,7 @@ actions:
   - utter_goodbye
   - action_submit_contact_form
   - action_get_forex
+  - action_recover_contact_email
 
 responses:
   utter_greet:

@@ -1,5 +1,6 @@
 import json
 import uuid
+import distance
 
 def extract_name(text, spacy_model):
     capitalized = " ".join([t.capitalize() for t in text.split()])
@@ -25,3 +26,22 @@ def add_contact(data):
     with open("contacts.json", "w") as f:
         json.dump(contact_data, f)
 
+def get_contacts():
+    with open("contacts.json") as f:
+        contact_data = json.load(f)
+    return contact_data
+
+
+def get_distance_ranking(name):
+    contact_data = get_contacts()
+    edit_distance = lambda x,y: distance.levenshtein(x.lower(), y.lower())
+    entries = [(edit_distance(name, cd["name"]), cd) for cd in contact_data if cd["name"]]
+    ranked = sorted(entries, key=lambda x:x[0])
+    return ranked
+
+
+def get_closest_contact(name):
+    ranking = get_distance_ranking(name)
+    top_1 = ranking[0]
+    contact = top_1[1]
+    return contact

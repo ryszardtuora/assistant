@@ -15,7 +15,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 from rasa_sdk.forms import FormAction
 
-from contact_utils import extract_name, add_contact
+from contact_utils import extract_name, add_contact, get_closest_contact
 from api_utils import get_currency_rates
 
 nlp = spacy.load("pl_spacy_model_morfeusz")
@@ -69,5 +69,22 @@ class ActionGetForex(Action):
                   domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         rates = get_currency_rates()
         dispatcher.utter_message(text=rates)
+        return []
+
+
+class ActionRecoverContactEmail(Action):
+
+    def name(self) -> Text:
+        return "action_recover_contact_email"
+
+    def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        name = tracker.get_slot("person")
+        contact = get_closest_contact(name)
+        contact_name = contact["name"]
+        contact_email = contact["email"]
+        message = "Mail {} to {}".format(contact_name, contact_email)
+        dispatcher.utter_message(message)
         return []
 

@@ -7,6 +7,11 @@ stories:
   - intent: get_forex
   - action: action_get_forex
 
+- story: recover_contact_email_1
+  steps:
+  - intent: recover_contact_email
+  - action: action_recover_contact_email
+
 - story: mixed
   steps:
   - intent: get_forex
