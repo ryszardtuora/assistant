@@ -17,6 +17,7 @@ from rasa_sdk.forms import FormAction
 
 from contact_utils import extract_name, add_contact, get_closest_contact
 from api_utils import get_currency_rates
+from time_utils import analyze_timestring, add_meeting
 
 nlp = spacy.load("pl_spacy_model_morfeusz")
 test_doc = nlp("to jest dokument testowy")
@@ -56,8 +57,26 @@ class ActionSubmitContactForm(Action):
         add_contact(data)
         confirmation_message = "Dodano kontakt {} o emailu {}".format(name, email)
         dispatcher.utter_message(confirmation_message)
-        return [SlotSet("person", name)]
+        return [SlotSet("person", name), SlotSet("email", email)]
 
+
+class ActionSubmitMeetingForm(Action):
+
+    def name(self) -> Text:
+        return "action_submit_meeting_form"
+
+    def run(self, dispatcher: CollectingDispatcher,
+                  tracker: Tracker,
+                  domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        name = tracker.get_slot("person")
+        contact = get_closest_contact(name)
+        contact_name = contact["name"]
+        time = tracker.get_slot("time")
+        meeting_time = str(analyze_timestring(time))
+        add_meeting(contact_name, meeting_time)
+        confirmation_message = "Dodano spotkanie z {} na datę {}".format(name, meeting_time)
+        dispatcher.utter_message(confirmation_message)
+        return [SlotSet("person", contact_name), SlotSet("time", meeting_time)]
 
 class ActionGetForex(Action):
 

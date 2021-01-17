@@ -15,11 +15,14 @@ intents:
 entities:
   - person
   - email
+  - time
 
 slots:
   person:
     type: text
   email:
+    type: text
+  time:
     type: text
 
 forms:
@@ -30,6 +33,14 @@ forms:
     email:
     - type: from_entity
       entity: email
+  meeting_form:
+    person:
+    - type: from_entity
+      entity: person
+    time:
+    - type: from_entity
+      entity: time  
+
 
 actions:
   - utter_greet
@@ -37,6 +48,7 @@ actions:
   - action_submit_contact_form
   - action_get_forex
   - action_recover_contact_email
+  - action_submit_meeting_form
 
 responses:
   utter_greet:
@@ -55,6 +67,9 @@ responses:
 
   utter_ask_email:
   - text: "Jaki jest adres email tej osoby?"
+
+  utter_ask_time:
+  - text: "Kiedy ma się odbyć spotkanie?"
   
   utter_default_fallback:
   - text: "Przepraszam, czegoś nie zrozumiałem. Czy możesz wyrazić to inaczej?"

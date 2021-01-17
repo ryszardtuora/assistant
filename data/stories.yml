@@ -47,6 +47,33 @@ stories:
   - active_loop: null
   - action: utter_default_fallback
 
+- story: book_meeting_happy
+  steps:
+  - intent: book_meeting
+  - action: meeting_form
+  - active_loop: meeting_form
+  - slot_was_set:
+    - requested_slot: person
+    - person: Adam Nowak
+  - slot_was_set:
+    - requested_slot: time
+    - time: przyszły czwartek
+  - active_loop: null
+  - action: action_submit_meeting_form
+
+- story: book_meeting_sad
+  steps:
+  - intent: book_meeting
+  - action: meeting_form
+  - active_loop: meeting_form
+  - slot_was_set:
+    - requested_slot: person
+    - person: Adam Nowak
+  - intent: out_of_scope
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: utter_default_fallback
+
 - story: joke
   steps:
   - intent: tell_me_a_joke
